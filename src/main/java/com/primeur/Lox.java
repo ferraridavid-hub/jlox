@@ -8,7 +8,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
 
-public class Main {
+public class Lox {
 
     static boolean hadError = false;
 
@@ -55,7 +55,7 @@ public class Main {
         }
     }
 
-    private static void error (int line, String message) {
+    protected static void error (int line, String message) {
         report(line, "", message);
     }
 
