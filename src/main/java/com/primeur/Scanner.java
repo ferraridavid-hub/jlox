@@ -89,7 +89,19 @@ public class Scanner {
                 line++;
                 break;
             case '"':
-//                string();
+                string();
+                break;
+            case '0':
+            case '1':
+            case '2':
+            case '3':
+            case '4':
+            case '5':
+            case '6':
+            case '7':
+            case '8':
+            case '9':
+                number();
                 break;
             default:
                 Lox.error(line, "Unexpected character.");
@@ -97,14 +109,61 @@ public class Scanner {
         }
     }
 
+    private void number() {
+        while(isDigit(peek())) {
+            advance();
+        }
+
+        // Look for a fractional part.
+        if (peek() == '.' && isDigit(peekNext())) {
+            do {
+                advance();
+            } while (isDigit(peek()));
+        }
+
+        addToken(TokenType.NUMBER, Double.parseDouble(source.substring(start, current)));
+    }
+
+    private boolean isDigit(char c) {
+        return c >= '0' && c <= '9';
+    }
+
+    private void string() {
+        while(!isAtEnd() && peek() != '"') {
+            if (peek() == '\n') {
+                line++;
+            }
+            advance();
+        }
+
+        // The closing " was not found
+        if (isAtEnd()) {
+            Lox.error(line, "Unterminated string.");
+            return;
+        }
+
+        String value = source.substring(start + 1, current);
+        addToken(TokenType.STRING, value);
+        advance();
+    }
+
     private char peek() {
+        if (isAtEnd()) {
+            return '\0';
+        }
         return source.charAt(current);
+    }
+
+    private char peekNext() {
+        if (current + 1 >= source.length()) {
+            return '\0';
+        }
+        return source.charAt(current + 1);
     }
 
     private char advance() {
         return source.charAt(current++);
     }
-
 
     private boolean match(char expected) {
         if (isAtEnd()) {
@@ -118,7 +177,11 @@ public class Scanner {
     }
 
     private void addToken(TokenType tokenType) {
-        tokenList.add(new Token(tokenType, source.substring(start, current), null, line));
+        addToken(tokenType, null);
+    }
+
+    private void addToken(TokenType tokenType, Object value) {
+        tokenList.add(new Token(tokenType, source.substring(start, current), value, line));
     }
 
     private boolean isAtEnd() {
