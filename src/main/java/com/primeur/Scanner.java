@@ -34,13 +34,14 @@ public class Scanner {
         keywords.put("while", TokenType.WHILE);
     }
 
-    Scanner(String source) {
+    public Scanner(String source) {
         this.source = source;
     }
 
-    List<Token> scanTokens() {
+    public List<Token> scanTokens() {
         while (!isAtEnd()) {
             // Here we are at the beginning of the next lexeme
+            // current points to the first unconsumed character in the source string
             start = current;
             scanToken();
         }
