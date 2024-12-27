@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="07d99dea-4d1d-4f5a-8d4f-bd680c1e6b4e" name="Changes" comment="Added one or two character tokens">
+    <list default="true" id="07d99dea-4d1d-4f5a-8d4f-bd680c1e6b4e" name="Changes" comment="Add string and numbers">
       <change beforePath="$PROJECT_DIR$/src/main/java/com/primeur/Scanner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/primeur/Scanner.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -100,7 +100,15 @@
       <option name="project" value="LOCAL" />
       <updated>1735257332012</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Add string and numbers">
+      <option name="closed" value="true" />
+      <created>1735258750016</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1735258750016</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -118,6 +126,7 @@
     <MESSAGE value="First commit" />
     <MESSAGE value="First tokens" />
     <MESSAGE value="Added one or two character tokens" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added one or two character tokens" />
+    <MESSAGE value="Add string and numbers" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add string and numbers" />
   </component>
 </project>
