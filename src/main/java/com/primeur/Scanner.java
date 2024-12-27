@@ -101,6 +101,8 @@ public class Scanner {
                     while (!isAtEnd() && peek() != '\n') {
                         advance();
                     }
+                } else if (match('*')) {
+                    multiLineComment();
                 } else {
                     addToken(TokenType.SLASH);
                 }
@@ -138,8 +140,34 @@ public class Scanner {
         }
     }
 
+    private void multiLineComment() {
+        while((peek() != '*' || peekNext() != '/') && !isAtEnd()) {
+
+            // Nested block comment
+            if (peek() == '/' && peekNext() == '*') {
+                advance();
+                advance();
+                multiLineComment();
+            } else {
+                if (peek() == '\n') {
+                    line++;
+                }
+                advance();
+            }
+        }
+
+        if (isAtEnd()) {
+            Lox.error(line, "Unterminated block comment.");
+            return;
+        }
+
+        // Consume the two closing characters */
+        advance();
+        advance();
+    }
+
     private void identifier() {
-        while(isAlphaNumeric(peek())) {
+        while (isAlphaNumeric(peek())) {
             advance();
         }
 
@@ -155,7 +183,7 @@ public class Scanner {
         return isDigit(c) || isAlpha(c);
     }
 
-    private boolean isAlpha(char c) {
+    private boolean isAlpha (char c) {
         return (c >= 'a' && c <= 'z') ||
                 (c >= 'A' && c <= 'Z') ||
                 (c == '_');

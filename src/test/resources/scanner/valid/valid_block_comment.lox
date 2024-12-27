@@ -1,0 +1,18 @@
+/* this multiline comment
+should be parsed without errors */
+
+/* Also this multiline comment shouldn't create problems */
+
+/*
+Also
+this
+*/
+
+/*   And
+    this
+
+
+    */
+
+/**/
+/* */
