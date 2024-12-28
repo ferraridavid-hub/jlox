@@ -1,4 +1,4 @@
-package com.primeur;
+package com.primeur.lexer;
 
 public class Token {
     final TokenType type;

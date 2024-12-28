@@ -1,4 +1,4 @@
-package com.primeur;
+package com.primeur.lexer;
 
 public enum TokenType {
     // Single character tokens

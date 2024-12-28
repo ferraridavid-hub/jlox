@@ -1,5 +1,8 @@
 package com.primeur;
 
+import com.primeur.lexer.Scanner;
+import com.primeur.lexer.Token;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -54,7 +57,7 @@ public class Lox {
         }
     }
 
-    protected static void error (int line, String message) {
+    public static void error (int line, String message) {
         report(line, "", message);
     }
 

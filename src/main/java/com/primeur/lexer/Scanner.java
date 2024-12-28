@@ -1,4 +1,6 @@
-package com.primeur;
+package com.primeur.lexer;
+
+import com.primeur.Lox;
 
 import java.util.ArrayList;
 import java.util.HashMap;
