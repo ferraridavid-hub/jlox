@@ -4,18 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="07d99dea-4d1d-4f5a-8d4f-bd680c1e6b4e" name="Changes" comment="Started building the abstract syntax tree for the parser">
-      <change afterPath="$PROJECT_DIR$/dev/script/generateProdClass.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/primeur/parser/Binary.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/primeur/parser/Expr.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/primeur/parser/Grouping.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/primeur/parser/Literal.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/primeur/parser/Unary.java" afterDir="false" />
+    <list default="true" id="07d99dea-4d1d-4f5a-8d4f-bd680c1e6b4e" name="Changes" comment="refactor">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/primeur/Lox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/primeur/Lox.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/primeur/Scanner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/primeur/lexer/Scanner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/primeur/Token.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/primeur/lexer/Token.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/primeur/TokenType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/primeur/lexer/TokenType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dev/script/generate_ast.py" beforeDir="false" afterPath="$PROJECT_DIR$/dev/script/generate_ast.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/primeur/parser/Binary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/primeur/parser/Binary.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/primeur/parser/Expr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/primeur/parser/Expr.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/primeur/parser/Grouping.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/primeur/parser/Grouping.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/primeur/parser/Literal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/primeur/parser/Literal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/primeur/parser/Unary.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/primeur/parser/Unary.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -294,8 +290,19 @@
       <option name="project" value="LOCAL" />
       <updated>1735404161356</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="refactor">
+      <option name="closed" value="true" />
+      <created>1735405125685</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1735405125685</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.py" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -318,6 +325,7 @@
     <MESSAGE value="Added multiline blocks comments." />
     <MESSAGE value="Refactor" />
     <MESSAGE value="Started building the abstract syntax tree for the parser" />
-    <option name="LAST_COMMIT_MESSAGE" value="Started building the abstract syntax tree for the parser" />
+    <MESSAGE value="refactor" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor" />
   </component>
 </project>
