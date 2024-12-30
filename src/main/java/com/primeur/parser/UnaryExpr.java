@@ -16,4 +16,12 @@ public class UnaryExpr extends Expr {
 	public <R> R accept(Visitor<R> visitor) {
 		return visitor.visitUnaryExpr(this);
 	}
+
+	public Token getOperator() {
+		return operator;
+	}
+
+	public Expr getRight() {
+		return right;
+	}
 }

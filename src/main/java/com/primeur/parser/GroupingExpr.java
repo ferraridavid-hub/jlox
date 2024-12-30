@@ -2,14 +2,18 @@ package com.primeur.parser;
 
 public class GroupingExpr extends Expr {
 
-	private final Expr right;
+	private final Expr expression;
 
-	public GroupingExpr(Expr right) {
-		this.right = right;
+	public GroupingExpr(Expr expression) {
+		this.expression = expression;
 	}
 
 	@Override
 	public <R> R accept(Visitor<R> visitor) {
 		return visitor.visitGroupingExpr(this);
+	}
+
+	public Expr getExpression() {
+		return expression;
 	}
 }

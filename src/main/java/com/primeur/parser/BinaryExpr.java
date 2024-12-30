@@ -18,4 +18,16 @@ public class BinaryExpr extends Expr {
 	public <R> R accept(Visitor<R> visitor) {
 		return visitor.visitBinaryExpr(this);
 	}
+
+	public Expr getLeft() {
+		return left;
+	}
+
+	public Token getOperator() {
+		return operator;
+	}
+
+	public Expr getRight() {
+		return right;
+	}
 }

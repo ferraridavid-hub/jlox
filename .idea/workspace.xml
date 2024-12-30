@@ -4,15 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="07d99dea-4d1d-4f5a-8d4f-bd680c1e6b4e" name="Changes" comment="Added visitor class for visitor design pattern">
+    <list default="true" id="07d99dea-4d1d-4f5a-8d4f-bd680c1e6b4e" name="Changes" comment="Refactored class generation script">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dev/script/generate_ast.py" beforeDir="false" afterPath="$PROJECT_DIR$/dev/script/generate_ast.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/primeur/parser/Binary.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/primeur/lexer/Token.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/primeur/lexer/Token.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/primeur/parser/BinaryExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/primeur/parser/BinaryExpr.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/primeur/parser/Expr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/primeur/parser/Expr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/primeur/parser/Grouping.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/primeur/parser/Literal.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/primeur/parser/Unary.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/primeur/parser/Visitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/primeur/parser/Visitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/primeur/parser/GroupingExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/primeur/parser/GroupingExpr.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/primeur/parser/debug/AstPrinter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/primeur/parser/debug/AstPrinter.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -307,7 +305,15 @@
       <option name="project" value="LOCAL" />
       <updated>1735419482366</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Refactored class generation script">
+      <option name="closed" value="true" />
+      <created>1735488109428</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1735488109428</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -346,6 +352,7 @@
     <MESSAGE value="Started building the abstract syntax tree for the parser" />
     <MESSAGE value="refactor" />
     <MESSAGE value="Added visitor class for visitor design pattern" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added visitor class for visitor design pattern" />
+    <MESSAGE value="Refactored class generation script" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactored class generation script" />
   </component>
 </project>

@@ -12,4 +12,8 @@ public class LiteralExpr extends Expr {
 	public <R> R accept(Visitor<R> visitor) {
 		return visitor.visitLiteralExpr(this);
 	}
+
+	public Object getValue() {
+		return value;
+	}
 }
