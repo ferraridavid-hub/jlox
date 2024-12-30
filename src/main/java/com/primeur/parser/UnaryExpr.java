@@ -12,16 +12,16 @@ public class UnaryExpr extends Expr {
 		this.right = right;
 	}
 
+	 public Token getOperator() {
+		return this.operator;
+	}
+
+	 public Expr getRight() {
+		return this.right;
+	}
+
 	@Override
 	public <R> R accept(Visitor<R> visitor) {
 		return visitor.visitUnaryExpr(this);
-	}
-
-	public Token getOperator() {
-		return operator;
-	}
-
-	public Expr getRight() {
-		return right;
 	}
 }

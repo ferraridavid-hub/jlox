@@ -4,13 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="07d99dea-4d1d-4f5a-8d4f-bd680c1e6b4e" name="Changes" comment="Refactored class generation script">
+    <list default="true" id="07d99dea-4d1d-4f5a-8d4f-bd680c1e6b4e" name="Changes" comment="Simple printer for debugging the parser">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/primeur/lexer/Token.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/primeur/lexer/Token.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dev/script/generate_ast.py" beforeDir="false" afterPath="$PROJECT_DIR$/dev/script/generate_ast.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/primeur/parser/BinaryExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/primeur/parser/BinaryExpr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/primeur/parser/Expr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/primeur/parser/Expr.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/primeur/parser/GroupingExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/primeur/parser/GroupingExpr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/primeur/parser/debug/AstPrinter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/primeur/parser/debug/AstPrinter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/primeur/parser/LiteralExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/primeur/parser/LiteralExpr.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/primeur/parser/UnaryExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/primeur/parser/UnaryExpr.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,6 +80,7 @@
     "Gradle.ScannerTest.testInvalidNestedBlockComment.executor": "Run",
     "Gradle.ScannerTest.testValidBlockComment.executor": "Debug",
     "Gradle.ScannerTest.testValidNestedBlockComment.executor": "Run",
+    "Gradle.jlox [:AstPrinter.main()].executor": "Run",
     "Gradle.jlox [:Lox.main()].executor": "Run",
     "Gradle.jlox [:Main.main()].executor": "Run",
     "Gradle.jlox [buildDependents].executor": "Run",
@@ -94,7 +95,20 @@
     "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle"
   }
 }]]></component>
-  <component name="RunManager" selected="Application.Lox">
+  <component name="RunManager" selected="Application.AstPrinter">
+    <configuration name="AstPrinter" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.primeur.parser.debug.AstPrinter" />
+      <module name="jlox.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.primeur.parser.debug.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Lox" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.primeur.Lox" />
       <module name="jlox.main" />
@@ -107,30 +121,6 @@
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
-    </configuration>
-    <configuration name="ScannerTest.testValidNestedBlockComment" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;com.primeur.scanner.ScannerTest.testValidNestedBlockComment&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
-      <method v="2" />
     </configuration>
     <configuration name="jlox [buildDependents]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
@@ -200,11 +190,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.AstPrinter" />
         <item itemvalue="Application.Lox" />
         <item itemvalue="Gradle.jlox [testClasses]" />
         <item itemvalue="Gradle.jlox [buildDependents]" />
         <item itemvalue="Gradle.jlox [build]" />
-        <item itemvalue="Gradle.ScannerTest.testValidNestedBlockComment" />
       </list>
     </recent_temporary>
   </component>
@@ -313,7 +303,15 @@
       <option name="project" value="LOCAL" />
       <updated>1735488109428</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Simple printer for debugging the parser">
+      <option name="closed" value="true" />
+      <created>1735569592335</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1735569592335</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -353,6 +351,7 @@
     <MESSAGE value="refactor" />
     <MESSAGE value="Added visitor class for visitor design pattern" />
     <MESSAGE value="Refactored class generation script" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactored class generation script" />
+    <MESSAGE value="Simple printer for debugging the parser" />
+    <option name="LAST_COMMIT_MESSAGE" value="Simple printer for debugging the parser" />
   </component>
 </project>

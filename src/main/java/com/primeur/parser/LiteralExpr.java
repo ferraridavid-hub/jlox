@@ -8,12 +8,12 @@ public class LiteralExpr extends Expr {
 		this.value = value;
 	}
 
+	 public Object getValue() {
+		return this.value;
+	}
+
 	@Override
 	public <R> R accept(Visitor<R> visitor) {
 		return visitor.visitLiteralExpr(this);
-	}
-
-	public Object getValue() {
-		return value;
 	}
 }

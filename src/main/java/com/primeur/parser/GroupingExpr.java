@@ -8,12 +8,12 @@ public class GroupingExpr extends Expr {
 		this.expression = expression;
 	}
 
+	 public Expr getExpression() {
+		return this.expression;
+	}
+
 	@Override
 	public <R> R accept(Visitor<R> visitor) {
 		return visitor.visitGroupingExpr(this);
-	}
-
-	public Expr getExpression() {
-		return expression;
 	}
 }
