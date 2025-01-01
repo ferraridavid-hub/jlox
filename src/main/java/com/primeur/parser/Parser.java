@@ -19,7 +19,7 @@ public class Parser {
     }
 
     public Expr parse() {
-        try{
+        try {
             return expression();
         } catch (ParseError e) {
             return null;
@@ -131,7 +131,7 @@ public class Parser {
 
     private void synchronize() {
         advance();
-        while(!isAtEnd()) {
+        while (!isAtEnd()) {
             if (previous().getType() == TokenType.SEMICOLON) {
                 return;
             }
