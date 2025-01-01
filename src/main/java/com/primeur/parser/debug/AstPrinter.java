@@ -2,11 +2,11 @@ package com.primeur.parser.debug;
 
 import com.primeur.lexer.Token;
 import com.primeur.lexer.TokenType;
-import com.primeur.parser.*;
+import com.primeur.parser.ast.*;
 
 public class AstPrinter implements Visitor<String> {
 
-    String print(Expr expr) {
+    public String print(Expr expr) {
         return expr.accept(this);
     }
 
@@ -42,18 +42,5 @@ public class AstPrinter implements Visitor<String> {
         }
         builder.append(")");
         return builder.toString();
-    }
-
-    public static void main(String[] args) {
-        Expr expression = new BinaryExpr(
-                new UnaryExpr(
-                        new Token(TokenType.MINUS, "-", null, 1),
-                        new LiteralExpr(234)),
-                new Token(TokenType.STAR, "*", null, 1),
-                new GroupingExpr(
-                        new LiteralExpr(45.65)
-                )
-        );
-        System.out.println(new AstPrinter().print(expression));
     }
 }

@@ -1,4 +1,4 @@
-package com.primeur.parser;
+package com.primeur.parser.ast;
 
 public class GroupingExpr extends Expr {
 

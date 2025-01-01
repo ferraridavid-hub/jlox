@@ -2,6 +2,10 @@ package com.primeur;
 
 import com.primeur.lexer.Scanner;
 import com.primeur.lexer.Token;
+import com.primeur.lexer.TokenType;
+import com.primeur.parser.Parser;
+import com.primeur.parser.ast.Expr;
+import com.primeur.parser.debug.AstPrinter;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -51,14 +55,26 @@ public class Lox {
     private static void run(String source) {
         Scanner scanner = new Scanner(source);
         List<Token> tokenList = scanner.scanTokens();
+        Parser parser = new Parser(tokenList);
+        Expr expression = parser.parse();
 
-        for (Token token : tokenList) {
-            System.out.println(token);
+        if (hadError) {
+            return;
         }
+
+        System.out.println(new AstPrinter().print(expression));
     }
 
     public static void error (int line, String message) {
         report(line, "", message);
+    }
+
+    public static void error(Token token , String message) {
+        if (token.getType() == TokenType.EOF) {
+            report(token.getLine(), " at end", message);
+        } else {
+            report(token.getLine(), " at '" + token.getLexeme() + "'", message);
+        }
     }
 
     private static void report(int line, String where, String message) {

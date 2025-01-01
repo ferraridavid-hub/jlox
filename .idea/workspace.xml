@@ -4,13 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="07d99dea-4d1d-4f5a-8d4f-bd680c1e6b4e" name="Changes" comment="Simple printer for debugging the parser">
+    <list default="true" id="07d99dea-4d1d-4f5a-8d4f-bd680c1e6b4e" name="Changes" comment="Parser">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/primeur/parser/Parser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/primeur/parser/ast/error/ParseError.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/primeur/parser/ast/utils/ExpressionHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dev/script/generate_ast.py" beforeDir="false" afterPath="$PROJECT_DIR$/dev/script/generate_ast.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/primeur/parser/BinaryExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/primeur/parser/BinaryExpr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/primeur/parser/GroupingExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/primeur/parser/GroupingExpr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/primeur/parser/LiteralExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/primeur/parser/LiteralExpr.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/primeur/parser/UnaryExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/primeur/parser/UnaryExpr.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/primeur/Lox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/primeur/Lox.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/primeur/parser/BinaryExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/primeur/parser/ast/BinaryExpr.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/primeur/parser/Expr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/primeur/parser/ast/Expr.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/primeur/parser/GroupingExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/primeur/parser/ast/GroupingExpr.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/primeur/parser/LiteralExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/primeur/parser/ast/LiteralExpr.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/primeur/parser/UnaryExpr.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/primeur/parser/ast/UnaryExpr.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/primeur/parser/Visitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/primeur/parser/ast/Visitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/primeur/parser/debug/AstPrinter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/primeur/parser/debug/AstPrinter.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,28 +81,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Gradle.ScannerTest.executor": "Run",
-    "Gradle.ScannerTest.testInvalidNestedBlockComment.executor": "Run",
-    "Gradle.ScannerTest.testValidBlockComment.executor": "Debug",
-    "Gradle.ScannerTest.testValidNestedBlockComment.executor": "Run",
-    "Gradle.jlox [:AstPrinter.main()].executor": "Run",
-    "Gradle.jlox [:Lox.main()].executor": "Run",
-    "Gradle.jlox [:Main.main()].executor": "Run",
-    "Gradle.jlox [buildDependents].executor": "Run",
-    "Gradle.jlox [build].executor": "Run",
-    "Gradle.jlox [testClasses].executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Gradle.ScannerTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ScannerTest.testInvalidNestedBlockComment.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ScannerTest.testValidBlockComment.executor&quot;: &quot;Debug&quot;,
+    &quot;Gradle.ScannerTest.testValidNestedBlockComment.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.jlox [:AstPrinter.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.jlox [:Lox.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.jlox [:Main.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.jlox [buildDependents].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.jlox [build].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.jlox [testClasses].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;
   }
-}]]></component>
-  <component name="RunManager" selected="Application.AstPrinter">
+}</component>
+  <component name="RunManager" selected="Application.Lox">
     <configuration name="AstPrinter" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.primeur.parser.debug.AstPrinter" />
       <module name="jlox.main" />
@@ -352,6 +359,7 @@
     <MESSAGE value="Added visitor class for visitor design pattern" />
     <MESSAGE value="Refactored class generation script" />
     <MESSAGE value="Simple printer for debugging the parser" />
-    <option name="LAST_COMMIT_MESSAGE" value="Simple printer for debugging the parser" />
+    <MESSAGE value="Parser" />
+    <option name="LAST_COMMIT_MESSAGE" value="Parser" />
   </component>
 </project>

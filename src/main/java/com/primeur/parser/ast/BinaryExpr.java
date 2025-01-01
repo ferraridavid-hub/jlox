@@ -1,4 +1,4 @@
-package com.primeur.parser;
+package com.primeur.parser.ast;
 
 import com.primeur.lexer.Token;
 
