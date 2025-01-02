@@ -16,6 +16,19 @@ public class AstPrinter implements Visitor<String> {
     }
 
     @Override
+    public String visitTernaryExpr(TernaryExpr ternaryExpr) {
+        StringBuilder builder = new StringBuilder();
+        builder.append("(if ");
+        builder.append(ternaryExpr.getLeft().accept(this));
+        builder.append(" ");
+        builder.append(ternaryExpr.getMiddle().accept(this));
+        builder.append(" ");
+        builder.append(ternaryExpr.getRight().accept(this));
+        builder.append(")");
+        return builder.toString();
+    }
+
+    @Override
     public String visitGroupingExpr(GroupingExpr groupingExpr) {
         return parenthesize("group", groupingExpr.getExpression());
     }

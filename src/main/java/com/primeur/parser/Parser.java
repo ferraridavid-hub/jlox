@@ -31,7 +31,20 @@ public class Parser {
     }
 
     private Expr sequence() {
-        return leftAssociativeBinaryExpr(this::equality, TokenType.COMMA);
+        return leftAssociativeBinaryExpr(this::conditional, TokenType.COMMA);
+    }
+
+    private Expr conditional() {
+        Expr left = equality();
+        if (match(TokenType.QUESTION)) {
+            Token leftOperand = previous();
+            Expr middle = equality();
+            Token rightOperand = consume(TokenType.COLON, "Expected : in ternary conditional operator.");
+            Expr right = conditional();
+            left = new TernaryExpr(left, leftOperand, middle, rightOperand, right);
+        }
+        return left;
+
     }
 
     private Expr equality() {
