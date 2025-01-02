@@ -38,7 +38,7 @@ public class Parser {
         Expr left = equality();
         if (match(TokenType.QUESTION)) {
             Token leftOperand = previous();
-            Expr middle = equality();
+            Expr middle = conditional();
             Token rightOperand = consume(TokenType.COLON, "Expected : in ternary conditional operator.");
             Expr right = conditional();
             left = new TernaryExpr(left, leftOperand, middle, rightOperand, right);
