@@ -27,7 +27,11 @@ public class Parser {
     }
 
     private Expr expression() {
-        return equality();
+        return sequence();
+    }
+
+    private Expr sequence() {
+        return leftAssociativeBinaryExpr(this::equality, TokenType.COMMA);
     }
 
     private Expr equality() {
