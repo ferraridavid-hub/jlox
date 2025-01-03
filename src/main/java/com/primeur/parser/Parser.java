@@ -68,6 +68,9 @@ public class Parser {
             Token operator = previous();
             Expr right = unary();
             return new UnaryExpr(operator, right);
+        } else if (match(TokenType.PLUS)) {
+            Token operator = previous();
+            error(operator, "Lox doesn't support unary + operator.");
         }
         return primary();
     }
