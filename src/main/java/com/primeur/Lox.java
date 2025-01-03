@@ -1,5 +1,6 @@
 package com.primeur;
 
+import com.primeur.interpreter.Interpreter;
 import com.primeur.lexer.Scanner;
 import com.primeur.lexer.Token;
 import com.primeur.lexer.TokenType;
@@ -62,7 +63,7 @@ public class Lox {
             return;
         }
 
-        System.out.println(new AstPrinter().print(expression));
+        System.out.println(new Interpreter().eval(expression));
     }
 
     public static void error (int line, String message) {
