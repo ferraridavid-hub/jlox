@@ -173,6 +173,12 @@ public class Parser {
     }
 
     private Expr leftAssociativeBinaryExpr(ExpressionHandler expressionHandler, TokenType... operators) {
+        // error productions
+        if (match(operators)) {
+            Token operator = previous();
+            leftAssociativeBinaryExpr(expressionHandler, operators); // discard right operand
+            throw error(operator, "Missing left operand for operator " +  operator.getLexeme() + ".");
+        }
         Expr left = expressionHandler.handle();
         while (match(operators)) {
             Token operator = previous();
