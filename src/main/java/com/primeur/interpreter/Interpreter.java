@@ -39,6 +39,7 @@ public class Interpreter implements Visitor<Object> {
             }
             case SLASH -> {
                 checkNumberOperands(operator, leftValue, rightValue);
+                checkDivisionByZero(operator, rightValue);
                 yield (double) leftValue / (double) rightValue;
             }
             case PLUS -> {
@@ -134,6 +135,13 @@ public class Interpreter implements Visitor<Object> {
     private void checkNumberOperands(Token operator, Object left, Object right) {
         if (!(left instanceof Double && right instanceof Double)) {
             throw new RuntimeError(operator, "Operands must be numbers.");
+        }
+    }
+
+    private void checkDivisionByZero(Token operator, Object right) {
+        double rightValue = (double) right;
+        if (rightValue == 0) {
+            throw new RuntimeError(operator, "Division by zero.");
         }
     }
 

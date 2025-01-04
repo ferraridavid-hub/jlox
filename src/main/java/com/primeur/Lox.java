@@ -72,6 +72,7 @@ public class Lox {
 
     public static void error (int line, String message) {
         report(line, "", message);
+        hadError = true;
     }
 
     public static void error(Token token , String message) {
@@ -80,15 +81,17 @@ public class Lox {
         } else {
             report(token.getLine(), " at '" + token.getLexeme() + "'", message);
         }
-    }
-
-    private static void report(int line, String where, String message) {
-        System.err.println("[line " + line + "] Error" + where + ": " + message);
         hadError = true;
     }
 
     public static void runtimeError(RuntimeError error) {
-        System.err.println(error.getMessage() + "\n[line " + error.getToken().getLine() + "]");
+        Token token = error.getToken();
+        String message = error.getMessage();
+        report(token.getLine(), " at '" + token.getLexeme() + "'", message);
         hadRuntimeError = true;
+    }
+
+    private static void report(int line, String where, String message) {
+        System.err.println("[line " + line + "] Error" + where + ": " + message);
     }
 }
