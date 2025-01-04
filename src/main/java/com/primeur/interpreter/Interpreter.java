@@ -2,6 +2,7 @@ package com.primeur.interpreter;
 
 import java.util.Objects;
 
+import com.primeur.Lox;
 import com.primeur.lexer.Token;
 import com.primeur.parser.ast.BinaryExpr;
 import com.primeur.parser.ast.Expr;
@@ -13,8 +14,13 @@ import com.primeur.parser.ast.Visitor;
 
 public class Interpreter implements Visitor<Object> {
 
-    public Object eval(Expr expr) {
-        return expr.accept(this);
+    public void interpret(Expr expr) {
+        try {
+            Object value = evaluate(expr);
+            System.out.println(stringify(value));
+        } catch(RuntimeError e) {
+            Lox.runtimeError(e);
+        }
     }
 
     @Override
@@ -123,5 +129,21 @@ public class Interpreter implements Visitor<Object> {
         if (!(left instanceof Double && right instanceof Double)) {
             throw new RuntimeError(operator, "Operands must be numbers.");
         }
+    }
+
+    private String stringify(Object value) {
+        if (value == null) {
+            return "nil";
+        }
+
+        if (value instanceof Double) {
+            String text = value.toString();
+            if (text.endsWith(".0")) {
+                text = text.substring(0, text.length() - 2);
+            }
+            return text;
+        }
+
+        return value.toString();
     }
 }

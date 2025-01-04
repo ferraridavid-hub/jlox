@@ -1,6 +1,7 @@
 package com.primeur;
 
 import com.primeur.interpreter.Interpreter;
+import com.primeur.interpreter.RuntimeError;
 import com.primeur.lexer.Scanner;
 import com.primeur.lexer.Token;
 import com.primeur.lexer.TokenType;
@@ -18,7 +19,8 @@ import java.util.List;
 
 public class Lox {
 
-    static boolean hadError = false;
+    private static boolean hadError = false;
+    private static boolean hadRuntimeError = false;
 
     public static void main(String[] args) throws IOException {
         if (args.length > 1) {
@@ -36,6 +38,9 @@ public class Lox {
 
         if (hadError) {
             System.exit(65); // EX_DATAERR
+        }
+        if (hadRuntimeError) {
+            System.exit(70);    // EX_SOFTWARE (internal software error)
         }
     }
 
@@ -63,7 +68,7 @@ public class Lox {
             return;
         }
 
-        System.out.println(new Interpreter().eval(expression));
+        new Interpreter().interpret(expression);
     }
 
     public static void error (int line, String message) {
@@ -81,5 +86,10 @@ public class Lox {
     private static void report(int line, String where, String message) {
         System.err.println("[line " + line + "] Error" + where + ": " + message);
         hadError = true;
+    }
+
+    public static void runtimeError(RuntimeError error) {
+        System.err.println(error.getMessage() + "\n[line " + error.getToken().getLine() + "]");
+        hadRuntimeError = true;
     }
 }
