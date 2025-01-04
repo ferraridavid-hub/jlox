@@ -48,6 +48,12 @@ public class Interpreter implements Visitor<Object> {
                 if (leftValue instanceof String sLeft && rightValue instanceof String sRight) {
                     yield sLeft + sRight;
                 }
+                if (leftValue instanceof String sLeft) {
+                    yield sLeft + stringify(rightValue);
+                }
+                if (rightValue instanceof String sRight) {
+                    yield stringify(leftValue) + sRight;
+                }
                 throw new RuntimeError(operator, "Operands must be two numbers or two strings.");
             }
             case GREATER -> {
@@ -144,6 +150,11 @@ public class Interpreter implements Visitor<Object> {
             return text;
         }
 
+        if (value instanceof String valueText) {
+            return "\"" + valueText + "\"";
+        }
+
         return value.toString();
     }
+
 }

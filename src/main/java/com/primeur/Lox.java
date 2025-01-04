@@ -7,7 +7,6 @@ import com.primeur.lexer.Token;
 import com.primeur.lexer.TokenType;
 import com.primeur.parser.Parser;
 import com.primeur.parser.ast.Expr;
-import com.primeur.parser.debug.AstPrinter;
 
 import java.io.BufferedReader;
 import java.io.IOException;
