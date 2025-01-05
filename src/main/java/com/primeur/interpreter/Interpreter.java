@@ -6,13 +6,13 @@ import com.primeur.Lox;
 import com.primeur.lexer.Token;
 import com.primeur.parser.ast.BinaryExpr;
 import com.primeur.parser.ast.Expr;
+import com.primeur.parser.ast.ExprVisitor;
 import com.primeur.parser.ast.GroupingExpr;
 import com.primeur.parser.ast.LiteralExpr;
 import com.primeur.parser.ast.TernaryExpr;
 import com.primeur.parser.ast.UnaryExpr;
-import com.primeur.parser.ast.Visitor;
 
-public class Interpreter implements Visitor<Object> {
+public class Interpreter implements ExprVisitor<Object> {
 
     public void interpret(Expr expr) {
         try {
