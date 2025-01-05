@@ -7,6 +7,7 @@ import com.primeur.parser.ast.*;
 import com.primeur.parser.ast.error.ParseError;
 import com.primeur.parser.ast.utils.ExpressionHandler;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Parser {
@@ -18,12 +19,31 @@ public class Parser {
         this.tokens = tokens;
     }
 
-    public Expr parse() {
-        try {
-            return expression();
-        } catch (ParseError e) {
-            return null;
+    public List<Stmt> parse() {
+        List<Stmt>  statements = new ArrayList<>();
+        while(!isAtEnd()) {
+            statements.add(statement());
         }
+        return statements;
+    }
+
+    private Stmt statement() {
+        if (match(TokenType.PRINT)) {
+            return printStatement();
+        }
+        return expressionStatement();
+    }
+
+    private Stmt printStatement() {
+        Expr expression = expression();
+        consume(TokenType.SEMICOLON, "Expected ';' after value.");
+        return new PrintStmt(expression);
+    }
+
+    private Stmt expressionStatement() {
+        Expr expression = expression();
+        consume(TokenType.SEMICOLON, "Expected ';' after expression");
+        return new ExpressionStmt(expression);
     }
 
     private Expr expression() {

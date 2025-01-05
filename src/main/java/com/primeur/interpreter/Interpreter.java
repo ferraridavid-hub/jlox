@@ -1,5 +1,6 @@
 package com.primeur.interpreter;
 
+import java.util.List;
 import java.util.Objects;
 
 import com.primeur.Lox;
@@ -7,17 +8,22 @@ import com.primeur.lexer.Token;
 import com.primeur.parser.ast.BinaryExpr;
 import com.primeur.parser.ast.Expr;
 import com.primeur.parser.ast.ExprVisitor;
+import com.primeur.parser.ast.ExpressionStmt;
 import com.primeur.parser.ast.GroupingExpr;
 import com.primeur.parser.ast.LiteralExpr;
+import com.primeur.parser.ast.PrintStmt;
+import com.primeur.parser.ast.Stmt;
+import com.primeur.parser.ast.StmtVisitor;
 import com.primeur.parser.ast.TernaryExpr;
 import com.primeur.parser.ast.UnaryExpr;
 
-public class Interpreter implements ExprVisitor<Object> {
+public class Interpreter implements ExprVisitor<Object>, StmtVisitor<Void> {
 
-    public void interpret(Expr expr) {
+    public void interpret(List<Stmt> statements) {
         try {
-            Object value = evaluate(expr);
-            System.out.println(stringify(value));
+            for (Stmt statement : statements) {
+                execute(statement);
+            }
         } catch(RuntimeError e) {
             Lox.runtimeError(e);
         }
@@ -163,6 +169,23 @@ public class Interpreter implements ExprVisitor<Object> {
         }
 
         return value.toString();
+    }
+
+    @Override
+    public Void visitExpressionStmt(ExpressionStmt expressionStmt) {
+        evaluate(expressionStmt.getExpression());
+        return null;
+    }
+
+    @Override
+    public Void visitPrintStmt(PrintStmt printStmt) {
+        Object value = evaluate(printStmt.getExpression());
+        System.out.println(stringify(value));
+        return null;
+    }
+
+    private void execute(Stmt statement) {
+        statement.accept(this);
     }
 
 }

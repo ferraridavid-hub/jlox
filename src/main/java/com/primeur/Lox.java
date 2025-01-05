@@ -7,6 +7,7 @@ import com.primeur.lexer.Token;
 import com.primeur.lexer.TokenType;
 import com.primeur.parser.Parser;
 import com.primeur.parser.ast.Expr;
+import com.primeur.parser.ast.Stmt;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -61,13 +62,14 @@ public class Lox {
         Scanner scanner = new Scanner(source);
         List<Token> tokenList = scanner.scanTokens();
         Parser parser = new Parser(tokenList);
-        Expr expression = parser.parse();
+        List<Stmt> statements = parser.parse();
 
         if (hadError) {
             return;
         }
 
-        new Interpreter().interpret(expression);
+        new Interpreter().interpret(statements);
+
     }
 
     public static void error (int line, String message) {
