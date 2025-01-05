@@ -21,6 +21,8 @@ import com.primeur.parser.ast.VariableExpr;
 
 public class Interpreter implements ExprVisitor<Object>, StmtVisitor<Void> {
 
+    private final Environment environment = new Environment();
+
     public void interpret(List<Stmt> statements) {
         try {
             for (Stmt statement : statements) {
@@ -191,15 +193,18 @@ public class Interpreter implements ExprVisitor<Object>, StmtVisitor<Void> {
     }
 
     @Override
-    public Void visitVarStmt(VarStmt varStmt) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'visitVarStmt'");
+    public Void visitVarStmt(VarStmt varStmt) { // store the identifier value binding somewhere
+        Object value = null;
+        if (varStmt.getInitializer() != null) {
+            value = evaluate(varStmt.getInitializer());
+        }
+        environment.define(varStmt.getName().getLexeme(), value);
+        return null;
     }
 
     @Override
-    public Object visitVariableExpr(VariableExpr variableExpr) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'visitVariableExpr'");
+    public Object visitVariableExpr(VariableExpr variableExpr) { // retrieve the value bound to the variable name
+        return environment.get(variableExpr.getName());
     }
 
 }

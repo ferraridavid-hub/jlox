@@ -6,7 +6,6 @@ import com.primeur.lexer.Scanner;
 import com.primeur.lexer.Token;
 import com.primeur.lexer.TokenType;
 import com.primeur.parser.Parser;
-import com.primeur.parser.ast.Expr;
 import com.primeur.parser.ast.Stmt;
 
 import java.io.BufferedReader;
@@ -18,6 +17,8 @@ import java.nio.file.Paths;
 import java.util.List;
 
 public class Lox {
+
+    private static final Interpreter interpreter = new Interpreter();
 
     private static boolean hadError = false;
     private static boolean hadRuntimeError = false;
@@ -68,7 +69,7 @@ public class Lox {
             return;
         }
 
-        new Interpreter().interpret(statements);
+        interpreter.interpret(statements);
 
     }
 
