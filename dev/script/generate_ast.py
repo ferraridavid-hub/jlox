@@ -8,16 +8,16 @@ def define_base_class(target, basename):
         writer.write("package com.primeur.parser.ast;\n")
         writer.write("\n")
         writer.write(f"public abstract class {basename} {{\n")
-        writer.write(f"\tpublic abstract <R> R accept(Visitor<R> visitor);\n")
+        writer.write(f"\tpublic abstract <R> R accept({basename}Visitor<R> visitor);\n")
         writer.write("}\n")
 
 
 def define_visitor(target, basename, productions):
-    path = os.path.join(target, "Visitor.java")
+    path = os.path.join(target, f"{basename}Visitor.java")
     with open(path, "w") as writer:
         writer.write("package com.primeur.parser.ast;\n")
         writer.write("\n")
-        writer.write("public interface Visitor<R> {\n")
+        writer.write(f"public interface {basename}Visitor<R> {{\n")
         for prod_name in productions:
             classname = prod_name + basename
             arg_name = prod_name.lower() + basename
@@ -65,7 +65,7 @@ def define_production_classes(target, basename, productions):
 
             # accept method
             writer.write("\t@Override\n")
-            writer.write("\tpublic <R> R accept(Visitor<R> visitor) {\n")
+            writer.write(f"\tpublic <R> R accept({basename}Visitor<R> visitor) {{\n")
             writer.write(f"\t\treturn visitor.visit{classname}(this);\n")
             writer.write("\t}")
             writer.write("\n")
@@ -74,18 +74,23 @@ def define_production_classes(target, basename, productions):
 
 def define_ast(target, basename, productions):
     define_base_class(target, basename)
-    define_production_classes(target, basename, productions)
     define_visitor(target, basename, productions)
-
+    define_production_classes(target, basename, productions)
 
 if __name__ == "__main__":
     output_dir = "/home/davidferrari/coding/java/jlox/src/main/java/com/primeur/parser/ast"
-    productions = {
+    expression_productions = {
         "Binary" : "Expr left, Token operator, Expr right",
         "Grouping" : "Expr expression",
         "Literal" : "Object value",
         "Unary" : "Token operator, Expr right", 
         "Ternary": "Expr left, Token leftOperator, Expr middle, Token rightOperator, Expr right"
         }
-    define_ast(output_dir, "Expr", productions)
+    define_ast(output_dir, "Expr", expression_productions)
+
+    statement_productions = {
+        "Expression": "Expr expression",
+        "Print": "Expr expression"
+    }
+    define_ast(output_dir, "Stmt", statement_productions)
 

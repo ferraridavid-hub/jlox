@@ -1,10 +1,10 @@
 package com.primeur.parser.ast;
 
-public class GroupingExpr extends Expr {
+public class PrintStmt extends Stmt {
 
 	private final Expr expression;
 
-	public GroupingExpr(Expr expression) {
+	public PrintStmt(Expr expression) {
 		this.expression = expression;
 	}
 
@@ -13,7 +13,7 @@ public class GroupingExpr extends Expr {
 	}
 
 	@Override
-	public <R> R accept(ExprVisitor<R> visitor) {
-		return visitor.visitGroupingExpr(this);
+	public <R> R accept(StmtVisitor<R> visitor) {
+		return visitor.visitPrintStmt(this);
 	}
 }
