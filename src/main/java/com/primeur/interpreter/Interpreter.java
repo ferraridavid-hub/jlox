@@ -16,6 +16,8 @@ import com.primeur.parser.ast.Stmt;
 import com.primeur.parser.ast.StmtVisitor;
 import com.primeur.parser.ast.TernaryExpr;
 import com.primeur.parser.ast.UnaryExpr;
+import com.primeur.parser.ast.VarStmt;
+import com.primeur.parser.ast.VariableExpr;
 
 public class Interpreter implements ExprVisitor<Object>, StmtVisitor<Void> {
 
@@ -186,6 +188,18 @@ public class Interpreter implements ExprVisitor<Object>, StmtVisitor<Void> {
 
     private void execute(Stmt statement) {
         statement.accept(this);
+    }
+
+    @Override
+    public Void visitVarStmt(VarStmt varStmt) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'visitVarStmt'");
+    }
+
+    @Override
+    public Object visitVariableExpr(VariableExpr variableExpr) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'visitVariableExpr'");
     }
 
 }

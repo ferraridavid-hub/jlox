@@ -20,11 +20,33 @@ public class Parser {
     }
 
     public List<Stmt> parse() {
-        List<Stmt>  statements = new ArrayList<>();
-        while(!isAtEnd()) {
-            statements.add(statement());
+        List<Stmt> declarations = new ArrayList<>();
+        while (!isAtEnd()) {
+            declarations.add(declaration());
         }
-        return statements;
+        return declarations;
+    }
+
+    private Stmt declaration() {
+        try {
+            if (match(TokenType.VAR)) {
+                return varDeclaration();
+            }
+            return statement();
+        } catch (ParseError e) {
+            synchronize();
+            return null;
+        }
+    }
+
+    private Stmt varDeclaration() {
+        Token name = consume(TokenType.IDENTIFIER, "Expected variable name.");
+        Expr initializer = null;
+        if (match(TokenType.EQUAL)) {
+            initializer = expression();
+        }
+        consume(TokenType.SEMICOLON, "Expected ';' after variable declaration");
+        return new VarStmt(name, initializer);
     }
 
     private Stmt statement() {
@@ -72,7 +94,8 @@ public class Parser {
     }
 
     private Expr comparison() {
-        return leftAssociativeBinaryExpr(this::term, TokenType.GREATER, TokenType.GREATER_EQUAL, TokenType.LESS, TokenType.LESS_EQUAL);
+        return leftAssociativeBinaryExpr(this::term, TokenType.GREATER, TokenType.GREATER_EQUAL, TokenType.LESS,
+                TokenType.LESS_EQUAL);
     }
 
     private Expr term() {
@@ -110,6 +133,10 @@ public class Parser {
 
         if (match(TokenType.NIL)) {
             return new LiteralExpr(null);
+        }
+
+        if (match(TokenType.IDENTIFIER)) {
+            return new VariableExpr(previous());
         }
 
         if (match(TokenType.LEFT_PAREN)) {
@@ -197,7 +224,7 @@ public class Parser {
         if (match(operators)) {
             Token operator = previous();
             leftAssociativeBinaryExpr(expressionHandler, operators); // discard right operand
-            throw error(operator, "Missing left operand for operator " +  operator.getLexeme() + ".");
+            throw error(operator, "Missing left operand for operator " + operator.getLexeme() + ".");
         }
         Expr left = expressionHandler.handle();
         while (match(operators)) {

@@ -84,13 +84,15 @@ if __name__ == "__main__":
         "Grouping" : "Expr expression",
         "Literal" : "Object value",
         "Unary" : "Token operator, Expr right", 
-        "Ternary": "Expr left, Token leftOperator, Expr middle, Token rightOperator, Expr right"
+        "Ternary": "Expr left, Token leftOperator, Expr middle, Token rightOperator, Expr right",
+        "Variable": "Token name"
         }
     define_ast(output_dir, "Expr", expression_productions)
 
     statement_productions = {
         "Expression": "Expr expression",
-        "Print": "Expr expression"
+        "Print": "Expr expression",
+        "Var": "Token name, Expr initializer"
     }
     define_ast(output_dir, "Stmt", statement_productions)
 
