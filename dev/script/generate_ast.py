@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+
 import os
 
 def define_base_class(target, basename):
