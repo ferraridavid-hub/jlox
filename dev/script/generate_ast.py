@@ -94,5 +94,6 @@ if __name__ == "__main__":
         "Print": "Expr expression",
         "Var": "Token name, Expr initializer"
     }
+
     define_ast(output_dir, "Stmt", statement_productions)
 
