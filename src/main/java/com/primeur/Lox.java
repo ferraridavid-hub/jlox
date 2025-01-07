@@ -64,13 +64,10 @@ public class Lox {
         List<Token> tokenList = scanner.scanTokens();
         Parser parser = new Parser(tokenList);
         List<Stmt> statements = parser.parse();
-
         if (hadError) {
             return;
         }
-
         interpreter.interpret(statements);
-
     }
 
     public static void error (int line, String message) {

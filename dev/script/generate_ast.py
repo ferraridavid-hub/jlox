@@ -78,8 +78,9 @@ def define_ast(target, basename, productions):
     define_production_classes(target, basename, productions)
 
 if __name__ == "__main__":
-    output_dir = "/home/davidferrari/coding/java/jlox/src/main/java/com/primeur/parser/ast"
+    output_dir = "../../src/main/java/com/primeur/parser/ast"
     expression_productions = {
+        "Assign": "Token name, Expr value",
         "Binary" : "Expr left, Token operator, Expr right",
         "Grouping" : "Expr expression",
         "Literal" : "Object value",

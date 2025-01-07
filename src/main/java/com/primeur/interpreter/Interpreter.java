@@ -82,7 +82,7 @@ public class Interpreter implements ExprVisitor<Object>, StmtVisitor<Void> {
             case LESS_EQUAL -> {
                 checkNumberOperands(operator, leftValue, rightValue);
                 yield (double) leftValue <= (double) rightValue;
-            }
+             }
             case EQUAL_EQUAL -> isEqual(leftValue, rightValue);
             case BANG_EQUAL -> !isEqual(leftValue, rightValue);
             default -> null;

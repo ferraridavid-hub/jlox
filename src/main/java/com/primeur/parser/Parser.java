@@ -73,7 +73,12 @@ public class Parser {
     }
 
     private Expr sequence() {
-        return leftAssociativeBinaryExpr(this::conditional, TokenType.COMMA);
+        return leftAssociativeBinaryExpr(this::assignment, TokenType.COMMA);
+    }
+
+    // TODO
+    private Expr assignment() {
+        return null;
     }
 
     private Expr conditional() {
