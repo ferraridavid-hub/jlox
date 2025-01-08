@@ -50,12 +50,15 @@ public class Lox {
         BufferedReader reader = new BufferedReader(input);
 
         while(true) {
+            if (!hadError) {
+                System.out.print("jlox> ");
+            }
+            hadError = false;
             String line = reader.readLine();
             if (line == null) {
                 break;
             }
             run(line);
-            hadError = false;
         }
     }
 
@@ -70,8 +73,22 @@ public class Lox {
         interpreter.interpret(statements);
     }
 
+    public static void error(int line, String className, String message){
+        report(line, "", className, message);
+        hadError = true;
+    }
+
     public static void error (int line, String message) {
         report(line, "", message);
+        hadError = true;
+    }
+
+    public static void error(Token token, String className, String message) {
+        if (token.getType() == TokenType.EOF) {
+            report(token.getLine(), " at end", className, message);
+        } else {
+            report(token.getLine(), " at '" + token.getLexeme() + "'", className, message);
+        }
         hadError = true;
     }
 
@@ -93,5 +110,9 @@ public class Lox {
 
     private static void report(int line, String where, String message) {
         System.err.println("[line " + line + "] Error" + where + ": " + message);
+    }
+
+    private static void report(int line, String where, String className, String message) {
+        System.err.println((className) + " [line " + line + "] Error" + where + ": " + message);
     }
 }

@@ -142,7 +142,7 @@ public class Scanner {
                 if (isAlpha(c)) {
                     identifier();
                 } else {
-                    Lox.error(line, "Unexpected character.");
+                    Lox.error(line, "Scanner","Unexpected character.");
                 }
                 break;
         }
@@ -165,7 +165,7 @@ public class Scanner {
         }
 
         if (isAtEnd()) {
-            Lox.error(line, "Unterminated block comment.");
+            Lox.error(line, "Scanner", "Unterminated block comment.");
             return;
         }
 
@@ -226,7 +226,7 @@ public class Scanner {
 
         // The closing " was not found
         if (isAtEnd()) {
-            Lox.error(line, "Unterminated string.");
+            Lox.error(line, "Scanner", "Unterminated string.");
             return;
         }
 
