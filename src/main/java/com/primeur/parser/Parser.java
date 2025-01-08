@@ -88,7 +88,6 @@ public class Parser {
         return leftAssociativeBinaryExpr(this::assignment, TokenType.COMMA);
     }
 
-    // TODO
     private Expr assignment() {
         Expr expr = conditional();
         if (match(TokenType.EQUAL)) {

@@ -8,7 +8,6 @@ import com.primeur.lexer.Token;
 import com.primeur.parser.ast.*;
 
 public class Interpreter implements ExprVisitor<Object>, StmtVisitor<Void> {
-
     private Environment environment = new Environment();
 
     public void interpret(List<Stmt> statements) {
@@ -156,20 +155,22 @@ public class Interpreter implements ExprVisitor<Object>, StmtVisitor<Void> {
     }
 
     private String stringify(Object value) {
-        if (value == null) {
-            return "nil";
-        }
-
-        if (value instanceof Double) {
-            String text = value.toString();
-            if (text.endsWith(".0")) {
-                text = text.substring(0, text.length() - 2);
+        switch (value) {
+            case null -> {
+                return "nil";
             }
-            return text;
-        }
-
-        if (value instanceof String valueText) {
-            return "\"" + valueText + "\"";
+            case Double v -> {
+                String text = value.toString();
+                if (text.endsWith(".0")) {
+                    text = text.substring(0, text.length() - 2);
+                }
+                return text;
+            }
+            case String valueText -> {
+                return "\"" + valueText + "\"";
+            }
+            default -> {
+            }
         }
 
         return value.toString();

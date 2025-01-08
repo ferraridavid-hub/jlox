@@ -49,7 +49,7 @@ public class Lox {
         InputStreamReader input = new InputStreamReader(System.in);
         BufferedReader reader = new BufferedReader(input);
 
-        while(true) {
+        while (true) {
             if (!hadError) {
                 System.out.print("jlox> ");
             }
@@ -73,12 +73,12 @@ public class Lox {
         interpreter.interpret(statements);
     }
 
-    public static void error(int line, String className, String message){
+    public static void error(int line, String className, String message) {
         report(line, "", className, message);
         hadError = true;
     }
 
-    public static void error (int line, String message) {
+    public static void error(int line, String message) {
         report(line, "", message);
         hadError = true;
     }
@@ -92,7 +92,7 @@ public class Lox {
         hadError = true;
     }
 
-    public static void error(Token token , String message) {
+    public static void error(Token token, String message) {
         if (token.getType() == TokenType.EOF) {
             report(token.getLine(), " at end", message);
         } else {
