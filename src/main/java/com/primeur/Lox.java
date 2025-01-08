@@ -6,6 +6,7 @@ import com.primeur.lexer.Scanner;
 import com.primeur.lexer.Token;
 import com.primeur.lexer.TokenType;
 import com.primeur.parser.Parser;
+import com.primeur.parser.ReplParser;
 import com.primeur.parser.ast.Stmt;
 
 import java.io.BufferedReader;
@@ -65,7 +66,7 @@ public class Lox {
     private static void run(String source) {
         Scanner scanner = new Scanner(source);
         List<Token> tokenList = scanner.scanTokens();
-        Parser parser = new Parser(tokenList);
+        Parser parser = new ReplParser(tokenList);
         List<Stmt> statements = parser.parse();
         if (hadError) {
             return;

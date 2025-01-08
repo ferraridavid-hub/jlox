@@ -74,13 +74,13 @@ public class Parser {
         return new PrintStmt(expression);
     }
 
-    private Stmt expressionStatement() {
+    protected Stmt expressionStatement() {
         Expr expression = expression();
         consume(TokenType.SEMICOLON, "Expected ';' after expression");
         return new ExpressionStmt(expression);
     }
 
-    private Expr expression() {
+    protected Expr expression() {
         return sequence();
     }
 
@@ -174,7 +174,7 @@ public class Parser {
         throw error(peek(), "Expected expression.");
     }
 
-    private boolean match(TokenType... types) {
+    boolean match(TokenType... types) {
         for (TokenType type : types) {
             if (check(type)) {
                 advance();
@@ -198,7 +198,7 @@ public class Parser {
         return previous();
     }
 
-    private boolean isAtEnd() {
+    protected boolean isAtEnd() {
         return peek().getType() == TokenType.EOF;
     }
 
@@ -210,7 +210,7 @@ public class Parser {
         return tokens.get(current - 1);
     }
 
-    private Token consume(TokenType type, String message) {
+    protected Token consume(TokenType type, String message) {
         if (check(type)) {
             return advance();
         }

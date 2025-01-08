@@ -4,13 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="07d99dea-4d1d-4f5a-8d4f-bd680c1e6b4e" name="Changes" comment="Added block statement class generation in script">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/primeur/interpreter/Environment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/primeur/interpreter/Environment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/primeur/interpreter/Interpreter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/primeur/interpreter/Interpreter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/primeur/parser/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/primeur/parser/Parser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/primeur/parser/ast/StmtVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/primeur/parser/ast/StmtVisitor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/scanner/valid/file.lox" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/scanner/valid/file.lox" afterDir="false" />
+    <list default="true" id="07d99dea-4d1d-4f5a-8d4f-bd680c1e6b4e" name="Changes" comment="Refactor">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/primeur/parser/ReplParser.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -359,7 +354,23 @@
       <option name="project" value="LOCAL" />
       <updated>1736371606385</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Added block statement with scope">
+      <option name="closed" value="true" />
+      <created>1736372798792</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1736372798792</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Refactor">
+      <option name="closed" value="true" />
+      <created>1736373997217</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1736373997217</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -394,7 +405,6 @@
     <MESSAGE value="Working version of scanner" />
     <MESSAGE value="Minor changes" />
     <MESSAGE value="Added multiline blocks comments." />
-    <MESSAGE value="Refactor" />
     <MESSAGE value="Started building the abstract syntax tree for the parser" />
     <MESSAGE value="refactor" />
     <MESSAGE value="Added visitor class for visitor design pattern" />
@@ -405,6 +415,8 @@
     <MESSAGE value="Interpreter evaluates ternary operator" />
     <MESSAGE value="Improved error reporting" />
     <MESSAGE value="Added block statement class generation in script" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added block statement class generation in script" />
+    <MESSAGE value="Added block statement with scope" />
+    <MESSAGE value="Refactor" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactor" />
   </component>
 </project>
