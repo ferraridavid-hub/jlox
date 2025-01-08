@@ -38,6 +38,10 @@ def define_production_classes(target, basename, productions):
                 writer.write("import com.primeur.lexer.Token;\n")
                 writer.write("\n")
 
+            if prod_fields and ("List" in prod_fields):
+                writer.write("import java.util.List;\n")
+                writer.write("\n")
+
             writer.write(f"public class {classname} extends {basename} {{\n")
             writer.write("\n")
 
@@ -91,6 +95,7 @@ if __name__ == "__main__":
     define_ast(output_dir, "Expr", expression_productions)
 
     statement_productions = {
+        "Block": "List<Stmt> statements",
         "Expression": "Expr expression",
         "Print": "Expr expression",
         "Var": "Token name, Expr initializer"
