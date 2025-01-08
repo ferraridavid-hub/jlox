@@ -110,7 +110,12 @@ public class Interpreter implements ExprVisitor<Object>, StmtVisitor<Void> {
 
     @Override
     public Object visitTernaryExpr(TernaryExpr ternaryExpr) {
-        throw new UnsupportedOperationException("Unimplemented method 'visitTernaryExpr'");
+        Expr leftExpression = ternaryExpr.getLeft();
+        if (isTruthy(evaluate(leftExpression))) {
+            return evaluate(ternaryExpr.getMiddle());
+        } else {
+            return evaluate(ternaryExpr.getRight());
+        }
     }
 
     private Object evaluate(Expr expr) {
