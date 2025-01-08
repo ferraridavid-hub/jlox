@@ -5,9 +5,9 @@ import java.util.*;
 import com.primeur.lexer.Token;
 
 public class Environment {
+    private static final Object UNINITIALIZED = new Object();
     private final Environment enclosing;
     private final Map<String, Object> values = new HashMap<>();
-    private final Set<String> unintialized = new HashSet<>();
 
     public Environment() {
         this.enclosing = null;
@@ -22,13 +22,13 @@ public class Environment {
     }
 
     public void define(String name) {
-        values.put(name, null);
-        unintialized.add(name);
+        values.put(name, UNINITIALIZED);
     }
 
     public Object get(Token name) {
         if (values.containsKey(name.getLexeme())){
-            if (unintialized.contains(name.getLexeme())) {
+            Object value = values.get(name.getLexeme());
+            if (value.equals(UNINITIALIZED)) {
                 throw new RuntimeError(name, "Uninitialized variable '" + name.getLexeme() + "'.");
             }
             return values.get(name.getLexeme());
@@ -42,7 +42,6 @@ public class Environment {
     public void assign(Token name, Object value) {
         if (values.containsKey(name.getLexeme())) {
             values.put(name.getLexeme(), value);
-            unintialized.remove(name.getLexeme());
             return;
         }
         if (enclosing != null) {
