@@ -4,10 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="07d99dea-4d1d-4f5a-8d4f-bd680c1e6b4e" name="Changes" comment="Parser">
+    <list default="true" id="07d99dea-4d1d-4f5a-8d4f-bd680c1e6b4e" name="Changes" comment="Added block statement class generation in script">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/primeur/interpreter/Environment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/primeur/interpreter/Environment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/primeur/interpreter/Interpreter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/primeur/interpreter/Interpreter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/primeur/parser/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/primeur/parser/Parser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/primeur/parser/ast/StmtVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/primeur/parser/ast/StmtVisitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/scanner/valid/file.lox" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/scanner/valid/file.lox" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,9 +95,9 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.tools&quot;
   }
 }</component>
-  <component name="RunManager" selected="Application.Lox">
-    <configuration name="AstPrinter" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.primeur.parser.debug.AstPrinter" />
+  <component name="RunManager" selected="Application.Jlox">
+    <configuration name="Jlox" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="com.primeur.Lox" />
       <module name="jlox.main" />
       <extension name="coverage">
         <pattern>
@@ -106,9 +109,10 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Lox" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="LoxFile" type="Application" factoryName="Application" temporary="true">
       <option name="MAIN_CLASS_NAME" value="com.primeur.Lox" />
       <module name="jlox.main" />
+      <option name="PROGRAM_PARAMETERS" value="src/test/resources/scanner/valid/file.lox" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.primeur.lexer.*" />
@@ -185,13 +189,20 @@
       <RunAsTest>false</RunAsTest>
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Application.Jlox" />
+      <item itemvalue="Application.LoxFile" />
+      <item itemvalue="Gradle.jlox [build]" />
+      <item itemvalue="Gradle.jlox [buildDependents]" />
+      <item itemvalue="Gradle.jlox [testClasses]" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.AstPrinter" />
-        <item itemvalue="Application.Lox" />
+        <item itemvalue="Gradle.jlox [build]" />
+        <item itemvalue="Application.Jlox" />
+        <item itemvalue="Application.LoxFile" />
         <item itemvalue="Gradle.jlox [testClasses]" />
         <item itemvalue="Gradle.jlox [buildDependents]" />
-        <item itemvalue="Gradle.jlox [build]" />
       </list>
     </recent_temporary>
   </component>
@@ -308,7 +319,47 @@
       <option name="project" value="LOCAL" />
       <updated>1735569592335</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Basic assignment expressions">
+      <option name="closed" value="true" />
+      <created>1736368046475</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1736368046475</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Basic assignment expressions">
+      <option name="closed" value="true" />
+      <created>1736368083654</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1736368083654</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Interpreter evaluates ternary operator">
+      <option name="closed" value="true" />
+      <created>1736369268919</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1736369268919</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Improved error reporting">
+      <option name="closed" value="true" />
+      <created>1736369286669</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1736369286669</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Added block statement class generation in script">
+      <option name="closed" value="true" />
+      <created>1736371606385</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1736371606385</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -350,6 +401,10 @@
     <MESSAGE value="Refactored class generation script" />
     <MESSAGE value="Simple printer for debugging the parser" />
     <MESSAGE value="Parser" />
-    <option name="LAST_COMMIT_MESSAGE" value="Parser" />
+    <MESSAGE value="Basic assignment expressions" />
+    <MESSAGE value="Interpreter evaluates ternary operator" />
+    <MESSAGE value="Improved error reporting" />
+    <MESSAGE value="Added block statement class generation in script" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added block statement class generation in script" />
   </component>
 </project>

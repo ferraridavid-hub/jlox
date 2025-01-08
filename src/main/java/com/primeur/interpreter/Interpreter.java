@@ -9,7 +9,7 @@ import com.primeur.parser.ast.*;
 
 public class Interpreter implements ExprVisitor<Object>, StmtVisitor<Void> {
 
-    private final Environment environment = new Environment();
+    private Environment environment = new Environment();
 
     public void interpret(List<Stmt> statements) {
         try {
@@ -173,6 +173,21 @@ public class Interpreter implements ExprVisitor<Object>, StmtVisitor<Void> {
         }
 
         return value.toString();
+    }
+
+    @Override
+    public Void visitBlockStmt(BlockStmt blockStmt) {
+        executeBlock(blockStmt.getStatements(), new Environment(environment));
+        return null;
+    }
+
+    private void executeBlock(List<Stmt> statements, Environment environment) {
+        try {
+            this.environment = environment;
+            statements.forEach(this::execute);
+        } finally {
+            this.environment = this.environment.getEnclosing();
+        }
     }
 
     @Override
