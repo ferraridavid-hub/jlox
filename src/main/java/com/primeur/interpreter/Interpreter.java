@@ -213,8 +213,10 @@ public class Interpreter implements ExprVisitor<Object>, StmtVisitor<Void> {
         Object value = null;
         if (varStmt.getInitializer() != null) {
             value = evaluate(varStmt.getInitializer());
+            environment.define(varStmt.getName().getLexeme(), value);
+        } else {
+            environment.define(varStmt.getName().getLexeme());
         }
-        environment.define(varStmt.getName().getLexeme(), value);
         return null;
     }
 
