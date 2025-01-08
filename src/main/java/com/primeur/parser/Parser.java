@@ -78,7 +78,17 @@ public class Parser {
 
     // TODO
     private Expr assignment() {
-        return null;
+        Expr expr = conditional();
+        if (match(TokenType.EQUAL)) {
+            Token equals = previous();
+            Expr value = assignment();  // right-recursive
+            if (expr instanceof VariableExpr variableExpr) {
+                Token name = variableExpr.getName();
+                return new AssignExpr(name, value);
+            }
+            error(equals, "Invalid assignment target.");
+        }
+        return expr;
     }
 
     private Expr conditional() {

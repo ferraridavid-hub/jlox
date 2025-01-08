@@ -5,19 +5,7 @@ import java.util.Objects;
 
 import com.primeur.Lox;
 import com.primeur.lexer.Token;
-import com.primeur.parser.ast.BinaryExpr;
-import com.primeur.parser.ast.Expr;
-import com.primeur.parser.ast.ExprVisitor;
-import com.primeur.parser.ast.ExpressionStmt;
-import com.primeur.parser.ast.GroupingExpr;
-import com.primeur.parser.ast.LiteralExpr;
-import com.primeur.parser.ast.PrintStmt;
-import com.primeur.parser.ast.Stmt;
-import com.primeur.parser.ast.StmtVisitor;
-import com.primeur.parser.ast.TernaryExpr;
-import com.primeur.parser.ast.UnaryExpr;
-import com.primeur.parser.ast.VarStmt;
-import com.primeur.parser.ast.VariableExpr;
+import com.primeur.parser.ast.*;
 
 public class Interpreter implements ExprVisitor<Object>, StmtVisitor<Void> {
 
@@ -31,6 +19,13 @@ public class Interpreter implements ExprVisitor<Object>, StmtVisitor<Void> {
         } catch(RuntimeError e) {
             Lox.runtimeError(e);
         }
+    }
+
+    @Override
+    public Object visitAssignExpr(AssignExpr assignExpr) {
+        Object value = evaluate(assignExpr.getValue());
+        environment.assign(assignExpr.getName(), value);
+        return value;
     }
 
     @Override
