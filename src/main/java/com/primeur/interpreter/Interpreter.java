@@ -177,6 +177,16 @@ public class Interpreter implements ExprVisitor<Object>, StmtVisitor<Void> {
     }
 
     @Override
+    public Void visitIfStmt(IfStmt ifStmt) {
+        if(isTruthy(evaluate(ifStmt.getExpression()))) {
+            execute(ifStmt.getThenBranch());
+        } else {
+            execute(ifStmt.getElseBranch());
+        }
+        return null;
+    }
+
+    @Override
     public Void visitBlockStmt(BlockStmt blockStmt) {
         executeBlock(blockStmt.getStatements(), new Environment(environment));
         return null;

@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="07d99dea-4d1d-4f5a-8d4f-bd680c1e6b4e" name="Changes" comment="Reintroduced expression evaluation in the REPL">
+    <list default="true" id="07d99dea-4d1d-4f5a-8d4f-bd680c1e6b4e" name="Changes" comment="Added if statements">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/primeur/interpreter/Environment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/primeur/interpreter/Environment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/primeur/interpreter/Interpreter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/primeur/interpreter/Interpreter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/primeur/parser/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/primeur/parser/Parser.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -380,7 +380,31 @@
       <option name="project" value="LOCAL" />
       <updated>1736375073844</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="The interpreter raises an error when accessing an uninitialized variable">
+      <option name="closed" value="true" />
+      <created>1736376005346</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1736376005346</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Revision of uninitialized variables handling">
+      <option name="closed" value="true" />
+      <created>1736376428414</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1736376428414</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Added if statements">
+      <option name="closed" value="true" />
+      <created>1736454224176</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1736454224176</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -428,6 +452,9 @@
     <MESSAGE value="Added block statement with scope" />
     <MESSAGE value="Refactor" />
     <MESSAGE value="Reintroduced expression evaluation in the REPL" />
-    <option name="LAST_COMMIT_MESSAGE" value="Reintroduced expression evaluation in the REPL" />
+    <MESSAGE value="The interpreter raises an error when accessing an uninitialized variable" />
+    <MESSAGE value="Revision of uninitialized variables handling" />
+    <MESSAGE value="Added if statements" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added if statements" />
   </component>
 </project>

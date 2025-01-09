@@ -28,7 +28,7 @@ public class Environment {
     public Object get(Token name) {
         if (values.containsKey(name.getLexeme())){
             Object value = values.get(name.getLexeme());
-            if (value.equals(UNINITIALIZED)) {
+            if (UNINITIALIZED.equals(value)) {
                 throw new RuntimeError(name, "Uninitialized variable '" + name.getLexeme() + "'.");
             }
             return values.get(name.getLexeme());
