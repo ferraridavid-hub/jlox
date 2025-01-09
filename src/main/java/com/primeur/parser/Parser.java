@@ -7,6 +7,9 @@ import com.primeur.parser.ast.*;
 import com.primeur.parser.ast.error.ParseError;
 import com.primeur.parser.ast.utils.ExpressionHandler;
 
+import javax.swing.plaf.nimbus.State;
+import java.io.LineNumberInputStream;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -59,13 +62,64 @@ public class Parser {
         if (match(TokenType.WHILE)) {
             return whileStatement();
         }
+        if (match(TokenType.FOR)) {
+            return forStatement();
+        }
         if (match(TokenType.LEFT_BRACE)) {
             return new BlockStmt(block());
         }
         return expressionStatement();
     }
 
-    private Stmt whileStatement(){
+    private Stmt forStatement() {
+        consume(TokenType.LEFT_PAREN, "Expected '(' after for.");
+        Stmt initializer;
+        if (match(TokenType.SEMICOLON)) {
+            initializer = null;
+        } else if (match(TokenType.VAR)) {
+            initializer = varDeclaration();
+        } else {
+            initializer = expressionStatement();
+        }
+
+        Expr condition = null;
+        if (!check(TokenType.SEMICOLON)) {
+            condition = expression();
+        }
+        consume(TokenType.SEMICOLON, "Expected ';' after condition.");
+
+        Expr increment = null;
+        if (!check(TokenType.RIGHT_PAREN)) {
+            increment = expression();
+        }
+        consume(TokenType.RIGHT_PAREN, "Expected ')' after for clauses.");
+
+        Stmt body = statement();
+
+        // I'm producing a BlockStmt containing the statement to generate a while loop equivalent to the for
+        if (increment != null) {
+            body = new BlockStmt(List.of(
+                    body,
+                    new ExpressionStmt(increment)));
+        }
+
+        if (condition == null) {
+            condition = new LiteralExpr(true);
+        }
+        body = new BlockStmt(List.of(
+                new WhileStmt(condition, body)));
+
+        if (initializer != null) {
+            body = new BlockStmt(List.of(
+                    initializer,
+                    body));
+        }
+
+        return body;
+
+    }
+
+    private Stmt whileStatement() {
         consume(TokenType.LEFT_PAREN, "Expected '(' after 'while'.");
         Expr condition = expression();
         consume(TokenType.RIGHT_PAREN, "Expected ')' after condition.");
@@ -85,7 +139,7 @@ public class Parser {
         return new IfStmt(condition, ifBranch, thenBranch);
     }
 
-    private List<Stmt> block(){
+    private List<Stmt> block() {
         List<Stmt> statements = new ArrayList<>();
         while (!check(TokenType.RIGHT_BRACE) && !isAtEnd()) {
             statements.add(declaration());
@@ -140,7 +194,7 @@ public class Parser {
         return left;
     }
 
-    private Expr logicOr(){
+    private Expr logicOr() {
         Expr left = logicAnd();
         while (match(TokenType.OR)) {
             Token operator = previous();
@@ -150,7 +204,7 @@ public class Parser {
         return left;
     }
 
-    private Expr logicAnd(){
+    private Expr logicAnd() {
         Expr left = equality();
         while (match(TokenType.AND)) {
             Token operator = previous();
