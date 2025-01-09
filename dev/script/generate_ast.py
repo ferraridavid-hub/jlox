@@ -88,7 +88,8 @@ if __name__ == "__main__":
         "Binary" : "Expr left, Token operator, Expr right",
         "Grouping" : "Expr expression",
         "Literal" : "Object value",
-        "Unary" : "Token operator, Expr right", 
+        "Unary" : "Token operator, Expr right",
+        "Logical": "Expr left, Token operator, Expr right",
         "Ternary": "Expr left, Token leftOperator, Expr middle, Token rightOperator, Expr right",
         "Variable": "Token name"
         }

@@ -5,6 +5,7 @@ import java.util.Objects;
 
 import com.primeur.Lox;
 import com.primeur.lexer.Token;
+import com.primeur.lexer.TokenType;
 import com.primeur.parser.ast.*;
 
 public class Interpreter implements ExprVisitor<Object>, StmtVisitor<Void> {
@@ -108,6 +109,21 @@ public class Interpreter implements ExprVisitor<Object>, StmtVisitor<Void> {
     }
 
     @Override
+    public Object visitLogicalExpr(LogicalExpr logicalExpr) {
+        Object leftValue = evaluate(logicalExpr.getLeft());
+        if (logicalExpr.getOperator().getType().equals(TokenType.OR)) {
+            if (isTruthy(leftValue)) {
+                return leftValue;
+            }
+        } else {
+            if (!isTruthy(leftValue)) {
+                return leftValue;
+            }
+        }
+        return evaluate(logicalExpr.getRight());
+    }
+
+    @Override
     public Object visitTernaryExpr(TernaryExpr ternaryExpr) {
         Expr leftExpression = ternaryExpr.getLeft();
         if (isTruthy(evaluate(leftExpression))) {
@@ -178,7 +194,7 @@ public class Interpreter implements ExprVisitor<Object>, StmtVisitor<Void> {
 
     @Override
     public Void visitIfStmt(IfStmt ifStmt) {
-        if(isTruthy(evaluate(ifStmt.getExpression()))) {
+        if(isTruthy(evaluate(ifStmt.getCondition()))) {
             execute(ifStmt.getThenBranch());
         } else {
             execute(ifStmt.getElseBranch());

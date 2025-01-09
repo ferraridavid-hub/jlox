@@ -6,6 +6,7 @@ public interface ExprVisitor<R> {
 	R visitGroupingExpr(GroupingExpr groupingExpr);
 	R visitLiteralExpr(LiteralExpr literalExpr);
 	R visitUnaryExpr(UnaryExpr unaryExpr);
+	R visitLogicalExpr(LogicalExpr logicalExpr);
 	R visitTernaryExpr(TernaryExpr ternaryExpr);
 	R visitVariableExpr(VariableExpr variableExpr);
 }

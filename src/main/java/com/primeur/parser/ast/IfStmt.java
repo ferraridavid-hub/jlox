@@ -2,18 +2,18 @@ package com.primeur.parser.ast;
 
 public class IfStmt extends Stmt {
 
-	private final Expr expression;
+	private final Expr condition;
 	private final Stmt thenBranch;
 	private final Stmt elseBranch;
 
-	public IfStmt(Expr expression, Stmt thenBranch, Stmt elseBranch) {
-		this.expression = expression;
+	public IfStmt(Expr condition, Stmt thenBranch, Stmt elseBranch) {
+		this.condition = condition;
 		this.thenBranch = thenBranch;
 		this.elseBranch = elseBranch;
 	}
 
-	 public Expr getExpression() {
-		return this.expression;
+	 public Expr getCondition() {
+		return this.condition;
 	}
 
 	 public Stmt getThenBranch() {

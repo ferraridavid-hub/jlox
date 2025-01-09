@@ -56,11 +56,23 @@ public class Parser {
         if (match(TokenType.IF)) {
             return ifStatement();
         }
+//        if (match(TokenType.WHILE)) {
+//            return whileStatement();
+//        }
         if (match(TokenType.LEFT_BRACE)) {
             return new BlockStmt(block());
         }
         return expressionStatement();
     }
+
+//    private Stmt whileStatement(){
+//        consume(TokenType.LEFT_PAREN, "Expected '(' after 'while'.");
+//        Expr condition = expression();
+//        consume(TokenType.RIGHT_PAREN, "Expected ')' after condition.");
+//        Stmt body = statement();
+//        return new WhileStmt(condition, body);
+//
+//    }
 
     private Stmt ifStatement() {
         consume(TokenType.LEFT_PAREN, "Expected '(' after 'if'");
@@ -119,7 +131,7 @@ public class Parser {
     }
 
     private Expr conditional() {
-        Expr left = equality();
+        Expr left = logicOr();
         if (match(TokenType.QUESTION)) {
             Token leftOperand = previous();
             Expr middle = conditional();
@@ -128,7 +140,26 @@ public class Parser {
             left = new TernaryExpr(left, leftOperand, middle, rightOperand, right);
         }
         return left;
+    }
 
+    private Expr logicOr(){
+        Expr left = logicAnd();
+        while (match(TokenType.OR)) {
+            Token operator = previous();
+            Expr right = logicAnd();
+            left = new LogicalExpr(left, operator, right);
+        }
+        return left;
+    }
+
+    private Expr logicAnd(){
+        Expr left = equality();
+        while (match(TokenType.AND)) {
+            Token operator = previous();
+            Expr right = equality();
+            left = new LogicalExpr(left, operator, right);
+        }
+        return left;
     }
 
     private Expr equality() {
