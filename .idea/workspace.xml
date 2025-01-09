@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="07d99dea-4d1d-4f5a-8d4f-bd680c1e6b4e" name="Changes" comment="First version of if statement">
+    <list default="true" id="07d99dea-4d1d-4f5a-8d4f-bd680c1e6b4e" name="Changes" comment="Introduced logical operator">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/primeur/parser/ast/LogicalExpr.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dev/script/generate_ast.py" beforeDir="false" afterPath="$PROJECT_DIR$/dev/script/generate_ast.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/primeur/interpreter/Interpreter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/primeur/interpreter/Interpreter.java" afterDir="false" />
@@ -415,7 +416,15 @@
       <option name="project" value="LOCAL" />
       <updated>1736455233568</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Introduced logical operator">
+      <option name="closed" value="true" />
+      <created>1736458391589</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1736458391589</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -467,6 +476,7 @@
     <MESSAGE value="Revision of uninitialized variables handling" />
     <MESSAGE value="Added if statements" />
     <MESSAGE value="First version of if statement" />
-    <option name="LAST_COMMIT_MESSAGE" value="First version of if statement" />
+    <MESSAGE value="Introduced logical operator" />
+    <option name="LAST_COMMIT_MESSAGE" value="Introduced logical operator" />
   </component>
 </project>

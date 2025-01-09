@@ -196,7 +196,7 @@ public class Interpreter implements ExprVisitor<Object>, StmtVisitor<Void> {
     public Void visitIfStmt(IfStmt ifStmt) {
         if(isTruthy(evaluate(ifStmt.getCondition()))) {
             execute(ifStmt.getThenBranch());
-        } else {
+        } else if (ifStmt.getElseBranch() != null) {
             execute(ifStmt.getElseBranch());
         }
         return null;
@@ -242,6 +242,14 @@ public class Interpreter implements ExprVisitor<Object>, StmtVisitor<Void> {
             environment.define(varStmt.getName().getLexeme(), value);
         } else {
             environment.define(varStmt.getName().getLexeme());
+        }
+        return null;
+    }
+
+    @Override
+    public Void visitWhileStmt(WhileStmt whileStmt) {
+        while(isTruthy(evaluate(whileStmt.getCondition()))) {
+            execute(whileStmt.getBody());
         }
         return null;
     }

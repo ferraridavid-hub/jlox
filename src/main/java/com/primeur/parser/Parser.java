@@ -56,23 +56,22 @@ public class Parser {
         if (match(TokenType.IF)) {
             return ifStatement();
         }
-//        if (match(TokenType.WHILE)) {
-//            return whileStatement();
-//        }
+        if (match(TokenType.WHILE)) {
+            return whileStatement();
+        }
         if (match(TokenType.LEFT_BRACE)) {
             return new BlockStmt(block());
         }
         return expressionStatement();
     }
 
-//    private Stmt whileStatement(){
-//        consume(TokenType.LEFT_PAREN, "Expected '(' after 'while'.");
-//        Expr condition = expression();
-//        consume(TokenType.RIGHT_PAREN, "Expected ')' after condition.");
-//        Stmt body = statement();
-//        return new WhileStmt(condition, body);
-//
-//    }
+    private Stmt whileStatement(){
+        consume(TokenType.LEFT_PAREN, "Expected '(' after 'while'.");
+        Expr condition = expression();
+        consume(TokenType.RIGHT_PAREN, "Expected ')' after condition.");
+        Stmt body = statement();
+        return new WhileStmt(condition, body);
+    }
 
     private Stmt ifStatement() {
         consume(TokenType.LEFT_PAREN, "Expected '(' after 'if'");
@@ -84,7 +83,6 @@ public class Parser {
             thenBranch = statement();
         }
         return new IfStmt(condition, ifBranch, thenBranch);
-
     }
 
     private List<Stmt> block(){
@@ -293,12 +291,6 @@ public class Parser {
     }
 
     private Expr leftAssociativeBinaryExpr(ExpressionHandler expressionHandler, TokenType... operators) {
-        // error productions
-        if (match(operators)) {
-            Token operator = previous();
-            leftAssociativeBinaryExpr(expressionHandler, operators); // discard right operand
-            throw error(operator, "Missing left operand for operator " + operator.getLexeme() + ".");
-        }
         Expr left = expressionHandler.handle();
         while (match(operators)) {
             Token operator = previous();

@@ -100,7 +100,8 @@ if __name__ == "__main__":
         "Block": "List<Stmt> statements",
         "Expression": "Expr expression",
         "Print": "Expr expression",
-        "Var": "Token name, Expr initializer"
+        "Var": "Token name, Expr initializer",
+        "While": "Expr condition, Stmt body"
     }
     define_ast(output_dir, "Stmt", statement_productions)
 
