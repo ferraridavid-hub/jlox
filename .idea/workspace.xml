@@ -4,10 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="07d99dea-4d1d-4f5a-8d4f-bd680c1e6b4e" name="Changes" comment="Introduced the while statement">
+    <list default="true" id="07d99dea-4d1d-4f5a-8d4f-bd680c1e6b4e" name="Changes" comment="Added break statement">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/primeur/parser/ast/BreakStmt.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dev/script/generate_ast.py" beforeDir="false" afterPath="$PROJECT_DIR$/dev/script/generate_ast.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/primeur/interpreter/Interpreter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/primeur/interpreter/Interpreter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/primeur/parser/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/primeur/parser/Parser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/scanner/valid/file.lox" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/scanner/valid/file.lox" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/primeur/parser/ast/StmtVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/primeur/parser/ast/StmtVisitor.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,7 +95,7 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.tools&quot;
   }
 }</component>
-  <component name="RunManager" selected="Application.LoxFile">
+  <component name="RunManager" selected="Application.Jlox">
     <configuration name="Jlox" type="Application" factoryName="Application" temporary="true">
       <option name="MAIN_CLASS_NAME" value="com.primeur.Lox" />
       <module name="jlox.main" />
@@ -428,7 +431,15 @@
       <option name="project" value="LOCAL" />
       <updated>1736460127460</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="Added break token">
+      <option name="closed" value="true" />
+      <created>1736538963346</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1736538963346</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -456,8 +467,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="First tokens" />
-    <MESSAGE value="Added one or two character tokens" />
     <MESSAGE value="Add string and numbers" />
     <MESSAGE value="Working version of scanner" />
     <MESSAGE value="Minor changes" />
@@ -481,6 +490,8 @@
     <MESSAGE value="First version of if statement" />
     <MESSAGE value="Introduced logical operator" />
     <MESSAGE value="Introduced the while statement" />
-    <option name="LAST_COMMIT_MESSAGE" value="Introduced the while statement" />
+    <MESSAGE value="Added break token" />
+    <MESSAGE value="Added break statement" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added break statement" />
   </component>
 </project>

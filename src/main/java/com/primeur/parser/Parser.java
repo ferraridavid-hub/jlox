@@ -7,9 +7,7 @@ import com.primeur.parser.ast.*;
 import com.primeur.parser.ast.error.ParseError;
 import com.primeur.parser.ast.utils.ExpressionHandler;
 
-import javax.swing.plaf.nimbus.State;
-import java.io.LineNumberInputStream;
-import java.sql.Statement;
+import java.awt.event.WindowFocusListener;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,6 +15,7 @@ public class Parser {
 
     private final List<Token> tokens;
     private int current = 0;
+    private int nestedLoops = 0;
 
     public Parser(List<Token> tokens) {
         this.tokens = tokens;
@@ -53,6 +52,9 @@ public class Parser {
     }
 
     private Stmt statement() {
+        if (match(TokenType.BREAK)) {
+            return breakStatement();
+        }
         if (match(TokenType.PRINT)) {
             return printStatement();
         }
@@ -69,6 +71,14 @@ public class Parser {
             return new BlockStmt(block());
         }
         return expressionStatement();
+    }
+
+    private Stmt breakStatement() {
+        if (nestedLoops == 0) {
+            throw error(previous(), "break outside loop.");
+        }
+        consume(TokenType.SEMICOLON, "Expected ';' after break.");
+        return new BreakStmt();
     }
 
     private Stmt forStatement() {
@@ -123,7 +133,9 @@ public class Parser {
         consume(TokenType.LEFT_PAREN, "Expected '(' after 'while'.");
         Expr condition = expression();
         consume(TokenType.RIGHT_PAREN, "Expected ')' after condition.");
+        nestedLoops++;
         Stmt body = statement();
+        nestedLoops--;
         return new WhileStmt(condition, body);
     }
 

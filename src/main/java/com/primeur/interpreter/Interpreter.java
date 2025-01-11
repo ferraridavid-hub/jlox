@@ -193,6 +193,11 @@ public class Interpreter implements ExprVisitor<Object>, StmtVisitor<Void> {
     }
 
     @Override
+    public Void visitBreakStmt(BreakStmt breakStmt) {
+        return null;
+    }
+
+    @Override
     public Void visitIfStmt(IfStmt ifStmt) {
         if(isTruthy(evaluate(ifStmt.getCondition()))) {
             execute(ifStmt.getThenBranch());
