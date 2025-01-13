@@ -95,6 +95,7 @@ if __name__ == "__main__":
         }
     define_ast(output_dir, "Expr", expression_productions)
 
+
     statement_productions = {
         "Break" : "",
         "If" : "Expr condition, Stmt thenBranch, Stmt elseBranch",
