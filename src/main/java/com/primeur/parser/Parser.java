@@ -104,7 +104,9 @@ public class Parser {
         }
         consume(TokenType.RIGHT_PAREN, "Expected ')' after for clauses.");
 
+        nestedLoops++;
         Stmt body = statement();
+        nestedLoops--;
 
         // I'm producing a BlockStmt containing the statement to generate a while loop equivalent to the for
         if (increment != null) {

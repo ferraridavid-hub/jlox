@@ -194,7 +194,7 @@ public class Interpreter implements ExprVisitor<Object>, StmtVisitor<Void> {
 
     @Override
     public Void visitBreakStmt(BreakStmt breakStmt) {
-        return null;
+        throw new BreakException();
     }
 
     @Override
@@ -253,8 +253,12 @@ public class Interpreter implements ExprVisitor<Object>, StmtVisitor<Void> {
 
     @Override
     public Void visitWhileStmt(WhileStmt whileStmt) {
-        while(isTruthy(evaluate(whileStmt.getCondition()))) {
-            execute(whileStmt.getBody());
+        try {
+            while (isTruthy(evaluate(whileStmt.getCondition()))) {
+                execute(whileStmt.getBody());
+            }
+        } catch (BreakException e) {
+            return null;
         }
         return null;
     }
