@@ -86,6 +86,7 @@ if __name__ == "__main__":
     expression_productions = {
         "Assign": "Token name, Expr value",
         "Binary" : "Expr left, Token operator, Expr right",
+        "Call" : "Expr callee, Token paren, List<Expr> arguments",
         "Grouping" : "Expr expression",
         "Literal" : "Object value",
         "Unary" : "Token operator, Expr right",

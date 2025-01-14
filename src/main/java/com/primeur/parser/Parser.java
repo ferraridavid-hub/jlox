@@ -254,7 +254,29 @@ public class Parser {
             Token operator = previous();
             error(operator, "Lox doesn't support unary + operator.");
         }
-        return primary();
+        return call();
+    }
+
+    private Expr call() {
+        Expr expr = expression();
+        while (match(TokenType.LEFT_PAREN)) {
+            expr = finishCall(expr);
+        }
+        return expr;
+    }
+
+    private Expr finishCall(Expr expr) {
+        List<Expr> arguments = new ArrayList<>();
+        if (!check(TokenType.RIGHT_PAREN)) {
+            do {
+                if (arguments.size() > 255) {
+                    error(peek(), "Can't have more than 255 arguments.");
+                }
+                arguments.add(expression());
+            } while (match(TokenType.COMMA));
+        }
+        Token paren = consume(TokenType.RIGHT_PAREN, "Expected ')' after argument list.");
+        return new CallExpr(expr, paren, arguments);
     }
 
     private Expr primary() {

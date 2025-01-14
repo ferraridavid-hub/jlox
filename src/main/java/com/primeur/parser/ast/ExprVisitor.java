@@ -3,6 +3,7 @@ package com.primeur.parser.ast;
 public interface ExprVisitor<R> {
 	R visitAssignExpr(AssignExpr assignExpr);
 	R visitBinaryExpr(BinaryExpr binaryExpr);
+	R visitCallExpr(CallExpr callExpr);
 	R visitGroupingExpr(GroupingExpr groupingExpr);
 	R visitLiteralExpr(LiteralExpr literalExpr);
 	R visitUnaryExpr(UnaryExpr unaryExpr);
